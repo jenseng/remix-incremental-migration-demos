@@ -1,0 +1,27 @@
+{
+  "name": "incremental-wouter-to-remix-upgrade-path",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "start": "remix-serve build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remix-run/node": "^1.5.1",
+    "@remix-run/react": "^1.5.1",
+    "@remix-run/serve": "^1.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "wouter": "^2.8.0-alpha.2"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.5.1",
+    "@types/react": "^17.0.45",
+    "@types/react-dom": "^17.0.17",
+    "typescript": "^4.6.4"
+  }
+}
