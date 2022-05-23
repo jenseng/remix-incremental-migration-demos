@@ -11,7 +11,7 @@ This is an example of how you can use iframes to incrementally migrate an app to
 
 ## About This App
 
-This particular example is pre-wired to work with a modified Canvas LMS setup. The app layout has been reimplemented in Remix and removed from Canvas. Additionally, the root index route can toggle between a new and an iframed view, and a new nested course route has been created. All other routes will load the corresponding pages from the old app using an iframe. Canvas has also been modified to emit `postMessage` events to let Remix know when a page is loaded or a navigation happens.
+This particular example is pre-wired to work with a [modified Canvas LMS setup](https://github.com/jenseng/canvas-lms/commits/remix-incremental-iframe-migration-demo). The app layout has been reimplemented in Remix and removed from Canvas. Additionally, the root index route can toggle between a new and an iframed view, and a new nested course route has been created. All other routes will load the corresponding pages from the old app using an iframe. Canvas has also been modified to emit `postMessage` events to let Remix know when a page is loaded or a navigation happens.
 
 ## General Process
 
