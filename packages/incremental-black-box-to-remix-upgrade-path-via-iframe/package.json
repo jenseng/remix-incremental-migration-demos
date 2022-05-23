@@ -1,5 +1,5 @@
 {
-  "name": "incremental-black-box-to-remix-upgrade-path-via-proxy",
+  "name": "incremental-black-box-to-remix-upgrade-path-via-iframe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

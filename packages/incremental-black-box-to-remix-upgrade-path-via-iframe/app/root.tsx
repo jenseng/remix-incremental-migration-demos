@@ -1,7 +1,7 @@
 import styles from "~/styles/global.css";
 import canvasLogo from "~/images/canvas_logomark_only@2x.png";
 import footerLogo from "~/images/footer-logo@2x.png";
-import type { MetaFunction } from "@remix-run/node";
+import { json, LoaderFunction, MetaFunction, redirect } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -10,11 +10,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { useState } from "react";
+import { getClient } from "./data";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Proxied Canvas",
+  title: "Iframed Canvas",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -22,7 +25,25 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
+export type LayoutContext = {
+  showLayout: boolean;
+  setShowLayout: (show: boolean) => void;
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const client = getClient(request);
+  try {
+    return json((await client.get("api/v1/users/self")).body);
+  } catch (e) {
+    if (!new URL(request.url).pathname.startsWith("/login"))
+      return redirect("/login");
+    return null;
+  }
+};
+
 export default function App() {
+  const user = useLoaderData();
+  const [showLayout, setShowLayout] = useState<boolean>(user ? true : false);
   return (
     <html lang="en">
       <head>
@@ -30,12 +51,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Navigation />
-        <section id="main">
+        {showLayout && <Navigation />}
+        <section id="main" className={showLayout ? "full" : "modal"}>
           <section id="content">
-            <Outlet />
+            <Outlet context={{ showLayout, setShowLayout }} />
           </section>
-          <Footer />
+          {showLayout && <Footer />}
         </section>
         <ScrollRestoration />
         <Scripts />

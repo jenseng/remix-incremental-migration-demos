@@ -1,6 +1,19 @@
 # Migrate a non-React-Router SPA to Remix
 
-This is an example of how you can incrementally migrate to Remix if you have a client-side React app that's not currently using React Router. This particular app is using [wouter](https://github.com/molefrog/wouter), but the process should generally work with other client-side routers (or if your app has no routing at all 😬).
+This is an example of how you can incrementally migrate to Remix if you have a client-side React app that's not currently using React Router.
+
+## Considerations
+
+- If your current app is based on React Router, consider following [this guide](https://remix.run/docs/en/v1/guides/migrating-react-router-app) instead.
+- If your current app is fully server-rendered app (e.g. Rails, PHP), a kitchen-sink React app (e.g. Next.js), or a non-React single-page-app (Vue, Preact, etc), consider using the [proxy](../incremental-black-box-to-remix-upgrade-path-via-proxy/) or [iframe](../incremental-black-box-to-remix-upgrade-path-via-iframe/) approaches instead.
+
+## About This App
+
+This particular app is using [wouter](https://github.com/molefrog/wouter). Its existing routes are generally untouched, though their `Link`s have been switched to `@remix-run/react` ones.
+
+## General Process
+
+This process should generally work with other client-side routers, or if your app has no routing at all:
 
 1. Install Remix and set up the conventional files of `app/{root,entry.client,entry.server}.tsx`
 2. Move all your existing code into a directory within the `app` directory (like `app/old-app` for example).
