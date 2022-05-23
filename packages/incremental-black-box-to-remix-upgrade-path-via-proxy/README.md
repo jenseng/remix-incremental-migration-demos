@@ -19,7 +19,7 @@ The process is generally the same no matter what type of app you're migrating:
 
 1. Install Remix and set up the conventional files of `app/{root,entry.client,entry.server}.tsx`
 2. Create a `app/routes/$.tsx` file like [the one](app/routes/$.tsx) in this repo that will proxy all requests. Tweak the proxying config as necessary, depending on the environment (local, test, prod).
-3. Modify the `start` command to run both the old and new apps simultaneously.
+3. Modify the `dev` command to run both the old and new apps simultaneously.
 4. **Important:** The root index route (/) can't be proxied with this mechanism, so you either have to 1. reimplement it in Remix now, 2. change its URL and redirect to it, or 3. proxy it another way (e.g. at the express layer).
 5. Apart from that, everything should work locally at this point (and it'll be server rendered too!!). Commit + push!
 6. Modify your infra (DNS, CDN, etc.) to point your app hostname(s) at your deployed Remix app. Depending on how/where you deploy, you may also need to change DNS/etc. for your old app (see proxying note in step 2).
