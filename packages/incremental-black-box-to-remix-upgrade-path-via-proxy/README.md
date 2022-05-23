@@ -1,6 +1,6 @@
-# Migrate an app to Remix by proxying
+# Migrate any app to Remix by proxying
 
-This is an example of how you can incrementally migrate a legacy app to Remix. This could be a fully server-rendered app (e.g. Rails, PHP), a kitchen-sink React app (e.g. Next.js), or a non-React single-page-app (Vue, Preact, etc).
+This is an example of how you can use proxying to incrementally migrate an app to Remix. This could be a fully server-rendered app (e.g. Rails, PHP), a kitchen-sink React app (e.g. Next.js), or a non-React single-page-app (Vue, Preact, etc).
 
 ## Considerations
 
