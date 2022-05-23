@@ -47,7 +47,6 @@ function Dashboard() {
 
 export default function Index() {
   const { newDash } = useLoaderData();
-  console.log(newDash);
   return (
     <>
       <Form
