@@ -18,7 +18,9 @@ const proxyHandler = async ({
   const response = await got({
     url,
     method: request.method as Method,
-    // TODO you might need to set additional options, or consider a more robust proxying approach if this doesn't suit your needs
+    // TODO you might need to set additional options, or consider a more robust proxying approach.
+    // This approach loads the entire response body in memory, which is ok for small responses,
+    // but ideally we should actually stream it.
     headers: {
       ...Object.fromEntries(request.headers.entries()),
     },
