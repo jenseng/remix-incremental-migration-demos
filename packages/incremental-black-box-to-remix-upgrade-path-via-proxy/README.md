@@ -9,10 +9,6 @@ This is an example of how you can use proxying to incrementally migrate an app t
 - This approach is well suited for migrating complete pages at a time, which means you will need to have navs/layouts implemented in both apps for the duration of the migration.
   - If you want more flexibility around migrating nested layouts/components at the cost of a little more complexity, consider the [iframe approach](../incremental-black-box-to-remix-upgrade-path-via-iframe/) instead. Note that you can do both approaches at the same time if you like 🥳
 
-## About This App
-
-This particular example is pre-wired to work with [a vanilla Canvas LMS setup](https://github.com/instructure/canvas-lms/wiki/Quick-Start). The app layout and root index route have been reimplemented in Remix, and a new nested route has been created. All other requests are proxied to Canvas.
-
 ## General Process
 
 The process is generally the same no matter what type of app you're migrating:
@@ -25,3 +21,14 @@ The process is generally the same no matter what type of app you're migrating:
 6. Modify your infra (DNS, CDN, etc.) to point your app hostname(s) at your deployed Remix app. Depending on how/where you deploy, you may also need to change DNS/etc. for your old app (see proxying note in step 2).
 7. Over time, reimplement routes in this app to take over URLs from the old app.
 8. You're done!
+
+## About This Demo App
+
+This particular example is pre-wired to work with [a vanilla Canvas LMS setup](https://github.com/instructure/canvas-lms/wiki/Quick-Start). The app layout and root index route have been reimplemented in Remix, and a new nested route has been created. All other requests are proxied to Canvas.
+
+### To Run This Demo App:
+
+1. Follow the [Canvas Quick Start](https://github.com/instructure/canvas-lms/wiki/Quick-Start) guide to get Canvas set up locally
+2. Clone this repo and run `npm install`
+3. `cd packages/incremental-black-box-to-remix-upgrade-path-via-proxy && npm run dev`
+4. Open your browser to `http://localhost:3000` and log in with the credentials you set up when installing Canvas.

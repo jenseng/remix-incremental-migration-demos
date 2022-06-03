@@ -9,10 +9,6 @@ This is an example of how you can use iframes to incrementally migrate an app to
 - This approach is well suited for migrating nested components/layouts in a flexible manner.
   - If you don't need this flexibility (i.e. you're going to migrate complete pages at a time), or if you are unable to embed your old site in an iframe (e.g. due to your IdP/SSO flow or other Reasons™), consider the [proxying approach](../incremental-black-box-to-remix-upgrade-path-via-proxy/) instead. Note that you can do both approaches at the same time if you like 🥳
 
-## About This App
-
-This particular example is pre-wired to work with a [modified Canvas LMS setup](https://github.com/jenseng/canvas-lms/commits/remix-incremental-iframe-migration-demo). The app layout has been reimplemented in Remix and removed from Canvas. Additionally, the root index route can toggle between a new and an iframed view, and a new nested course route has been created. All other routes will load the corresponding pages from the old app using an iframe. Canvas has also been modified to emit `postMessage` events to let Remix know when a page is loaded or a navigation happens.
-
 ## General Process
 
 The process is generally the same no matter what type of app you're migrating:
@@ -25,3 +21,14 @@ The process is generally the same no matter what type of app you're migrating:
 6. Modify your infra (DNS, CDN, etc.) to point your app hostname(s) at your deployed Remix app, and use a new hostname for your old app (see `target` note in step 2).
 7. Over time, reimplement routes in this app to take over URLs from the old app.
 8. You're done!
+
+## About This Demo App
+
+This particular example is pre-wired to work with a [modified Canvas LMS setup](https://github.com/jenseng/canvas-lms/commits/remix-incremental-iframe-migration-demo). The app layout has been reimplemented in Remix and removed from Canvas. Additionally, the root index route can toggle between a new and an iframed view, and a new nested course route has been created. All other routes will load the corresponding pages from the old app using an iframe. Canvas has also been modified to emit `postMessage` events to let Remix know when a page is loaded or a navigation happens.
+
+### To Run This Demo App:
+
+1. Follow the [Canvas Quick Start](https://github.com/instructure/canvas-lms/wiki/Quick-Start) guide to get Canvas set up locally, and then pull down [this branch](https://github.com/jenseng/canvas-lms/commits/remix-incremental-iframe-migration-demo)
+2. Clone this repo and run `npm install`
+3. `cd packages/incremental-black-box-to-remix-upgrade-path-via-iframe && npm run dev`
+4. Open your browser to `http://localhost:3000` and log in with the credentials you set up when installing Canvas.

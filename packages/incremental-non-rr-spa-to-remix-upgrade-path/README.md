@@ -7,10 +7,6 @@ This is an example of how you can incrementally migrate to Remix if you have a c
 - If your current app is based on React Router, consider following [this guide](https://remix.run/docs/en/v1/guides/migrating-react-router-app) instead.
 - If your current app is fully server-rendered app (e.g. Rails, PHP), a kitchen-sink React app (e.g. Next.js), or a non-React single-page-app (Vue, Preact, etc), consider using the [proxy](../incremental-black-box-to-remix-upgrade-path-via-proxy/) or [iframe](../incremental-black-box-to-remix-upgrade-path-via-iframe/) approaches instead.
 
-## About This App
-
-This particular app is using [wouter](https://github.com/molefrog/wouter). Its existing routes are generally untouched, though their `Link`s have been switched to `@remix-run/react` ones.
-
 ## General Process
 
 This process should generally work with other client-side routers, or if your app has no routing at all:
@@ -26,3 +22,13 @@ This process should generally work with other client-side routers, or if your ap
 9. You're done!
 
 Many thanks to [@kentcdodds](https://github.com/kentcdodds) and [@chaance](https://github.com/chaance) for their react-router->remix migration docs and examples 🙏
+
+## About This Demo App
+
+This particular app is using [wouter](https://github.com/molefrog/wouter). Its existing routes are generally untouched, though their `Link`s have been switched to `@remix-run/react` ones.
+
+### To Run This Demo App:
+
+1. Clone this repo and run `npm install`
+2. `cd packages/incremental-non-rr-spa-to-remix-upgrade-path && npm run dev`
+3. Open your browser to `http://localhost:3000`
